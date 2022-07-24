@@ -1,0 +1,12 @@
+.header{
+	display: grid;
+	grid-template-columns: auto 800px auto;
+}
+
+.logoWrapper {
+
+}
+
+.search {
+	margin: 10px 0;
+}
