@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { searchName } from '../helpers/searchName';
-import { ItemsCollection } from '../components';
+import { ItemsCollection, Spinner } from '../components';
 
 
 function Search(): JSX.Element {
@@ -32,8 +32,8 @@ function Search(): JSX.Element {
 	}, [query]);
 
   return (
-    <>
-		<ItemsCollection items={items}/>
+    <>	
+		{isLoading? <Spinner/> : <ItemsCollection items={items}/>}	
     </>
   );
 }

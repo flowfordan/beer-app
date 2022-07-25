@@ -5,16 +5,17 @@
 
     color: var(--black);
     border: none;
-    outline-color: var(--black);
+    outline-color: var(--grey-dark);
     background-color: var(--white);
 
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
-    border-radius: 5px;
+    
 
     font-size: 16px;
     line-height: 22px;
     font-family: var(--font-family);
 	padding-left: 10px;
+
 }
 
 

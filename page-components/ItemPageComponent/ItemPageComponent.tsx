@@ -147,7 +147,6 @@ export const ItemPageComponent = ({ id }: ItemPageComponentProps): JSX.Element =
 			toggleLoading(true);
 			axios.get(`https://api.punkapi.com/v2/beers/${id}`)
 			.then(resp => {
-				console.log(resp.data[0]);
 				setProduct(resp.data[0]);
 				toggleLoading(false);
 			})

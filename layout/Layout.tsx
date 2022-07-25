@@ -3,7 +3,6 @@ import styles from './Layout.module.css';
 import cn from 'classnames';
 import { Header } from "./Header/Header";
 import { Footer } from "./Footer/Footer";
-import { FunctionComponent } from "react";
 
 const Layout = ({ children }: LayoutProps): JSX.Element => {
 
@@ -22,7 +21,7 @@ const Layout = ({ children }: LayoutProps): JSX.Element => {
     
 };
 
-export const withLayout =(Component: FunctionComponent) => {
+export const withLayout =(Component: any) => {
     return function withLayoutComponent(props: any): JSX.Element {
         return (
                 <Layout>

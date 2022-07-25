@@ -4,28 +4,23 @@ import cn from 'classnames';
 import { ForwardedRef, forwardRef, useEffect, useState } from "react";
 import { Card } from "../Card/Card";
 import Image from "next/image";
-import { ProductCard } from "../../interfaces/product.interface";
 import { cutText } from "../../helpers/cutText";
 import Link from "next/link";
 
 export const ItemsCollection = forwardRef(function ItemsCollection(
     { className, items, ...props }: ItemsCollectionProps, ref: ForwardedRef<HTMLDivElement>){
 
-		const [currentPage, setPage] = useState(1);
-		const [collection, setCollection] = useState<Array<any>>(items);
+	const [currentPage, setPage] = useState(1);
+	const [collection, setCollection] = useState<Array<any>>([]);
 
 	const itemsPerPage = 8;
 	const pagesNum = Math.ceil(items.length / itemsPerPage);
 	const pages = Array.from(Array(pagesNum).keys());
 
-	console.log(pagesNum, pages, items);
-
 	useEffect(() => {
 		const itemsArr = items.slice((currentPage-1)*itemsPerPage, currentPage*itemsPerPage);
 		setCollection(itemsArr);
 	}, [currentPage, items]);
-
-	console.log(collection)
 
     return (
 		<div className={styles.collectionWrap}>
@@ -45,7 +40,7 @@ export const ItemsCollection = forwardRef(function ItemsCollection(
         {...props}
         ref={ref}
         >
-			{collection.length>0? collection.map((i:ProductCard) => {
+			{collection.length>0? collection.map((i:any) => {
 			return(
 				<Link key={i.id} href={`/item/${i.id}`}>
 				<Card  className={cn(styles.item, className)}>

@@ -19,12 +19,18 @@ export const Search = ({ className, ...props }: SearchProps): JSX.Element => {
 		}
 	}, [search]);
 
+	useEffect(() => {
+		return () => {
+			clearTimeout(timer);
+		};
+	}, []);
+
     const startSearch = (e?: SyntheticEvent) => {
 		if(e){
 			e.preventDefault();
 			if(search === ''){
-				console.log('WARNING')
-				return
+				console.log('WARNING EMPTY SEARCH');
+				return;
 			}
 		}
 		clearTimeout(timer);

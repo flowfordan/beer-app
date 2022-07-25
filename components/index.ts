@@ -7,3 +7,4 @@ export * from './Textarea/Textarea';
 export * from './Search/Search';
 export * from './Divider/Divider';
 export * from './ItemsCollection/ItemsCollection';
+export * from './Spinner/Spinner';
