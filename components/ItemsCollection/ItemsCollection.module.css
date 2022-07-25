@@ -1,3 +1,30 @@
+.collectionWrap {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.pagesWrap {
+	display: flex;
+	justify-content: flex-start;
+	gap: 5px;
+}
+
+.page {
+	padding: 3px;
+	cursor: pointer;
+	border: 1px solid rgba(255, 255, 255, 0);
+}
+
+.pageActive {
+	background-color: var(--primary-light);
+}
+
+.page:hover {
+	border: 1px solid var(--primary);
+	transition: all 0.5s;
+}
+
 .itemsCollection {
 	display: flex;
 	flex-wrap: wrap;

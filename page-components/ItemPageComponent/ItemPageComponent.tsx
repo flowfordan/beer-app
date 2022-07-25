@@ -1,9 +1,8 @@
 import { ItemPageComponentProps } from "./ItemPageComponent.props";
 import styles from './ItemPageComponent.module.css';
 import cn from 'classnames';
-import { Card, Divider, Htag, Paragraph, Tag } from "../../components";
-//import { ItemLevelCategory } from "../../interfaces/page.interface";
-import { useEffect, useReducer, useState } from "react";
+import { Card, Divider } from "../../components";
+import { useEffect, useState } from "react";
 import axios from 'axios';
 import Image from "next/image";
 
@@ -28,10 +27,6 @@ export const ItemPageComponent = ({ id }: ItemPageComponentProps): JSX.Element =
 
 			const indicesArr = [['ABV', abv], ['IBU',ibu], ['EBC',ebc], ['SRM', srm], ['PH',ph]];
 			const processArr = [volume, boil_volume, ingredients];
-
-			
-			
-
 
 			return(
 			<Card className={styles.productWrap}>
@@ -126,8 +121,6 @@ export const ItemPageComponent = ({ id }: ItemPageComponentProps): JSX.Element =
 										</ul>
 									</div>
 								</div>
-								
-								
 							</div>
 						</div>
 						
@@ -150,7 +143,6 @@ export const ItemPageComponent = ({ id }: ItemPageComponentProps): JSX.Element =
 			</Card>
 		)
 		}
-		
 	}
 
 	useEffect(() => {
@@ -164,7 +156,7 @@ export const ItemPageComponent = ({ id }: ItemPageComponentProps): JSX.Element =
 			});
 		}
 
-	}, [id])
+	}, [id]);
 
     return (
         <div className={styles.wrapper}>

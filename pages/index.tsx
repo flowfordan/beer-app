@@ -8,11 +8,28 @@ import { API } from '../helpers/api';
 
 function Home({ menu }: HomeProps): JSX.Element {
 
-	
+	const [items, setItems] = useState([]);
+	const [isLoading, toggleLoading] = useState(false);
+
+	useEffect(() => {
+		toggleLoading(true);
+
+		fetch('https://api.punkapi.com/v2/beers')
+		.then((response) => {
+			return response.json();
+		})
+		.then((data) => {
+			setItems(data);
+			toggleLoading(false);
+		})
+		.catch(data => console.log(data));
+	}, []);
+
+	//loader
 
   return (
     <>
-		<ItemsCollection />
+		{isLoading? `Loading` : <ItemsCollection items={items}/>}
     </>
   );
 }

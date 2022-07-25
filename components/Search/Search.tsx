@@ -11,14 +11,13 @@ export const Search = ({ className, ...props }: SearchProps): JSX.Element => {
 
     const [search, setSearch] = useState<string>('');
     const router = useRouter();
-	let timer: NodeJS.Timeout
+	let timer: NodeJS.Timeout;
 
 	useEffect(() => {
 		if(search !== ''){
 			startSearch();
 		}
-		
-	}, [search])
+	}, [search]);
 
     const startSearch = (e?: SyntheticEvent) => {
 		if(e){
@@ -36,7 +35,7 @@ export const Search = ({ className, ...props }: SearchProps): JSX.Element => {
 				q: search
 			}
 		})
-		}, 1000)
+		}, 1000);
     }
 
     return (

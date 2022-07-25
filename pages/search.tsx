@@ -4,22 +4,47 @@ import axios from 'axios';
 import { MenuItem } from '../interfaces/menu.interface';
 import { API } from '../helpers/api';
 import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
+import { searchName } from '../helpers/searchName';
+import { ItemsCollection } from '../components';
 
 
 function Search(): JSX.Element {
 
-	const router = useRouter();
-	console.log(router.query);
+	const [items, setItems] = useState([]);
+	const [isLoading, toggleLoading] = useState(false);
+	const [query, setQuery] = useState<string | string[] | undefined>('');
 
-	//filter items
+	const router = useRouter();
+	
+	//console.log(router.query.q);
+	//setQuery(router.query.q)
+
+	useEffect(() => {
+		setQuery(router.query.q);
+	})
+
+	useEffect(() => {
+		toggleLoading(true);
+		
+		fetch('https://api.punkapi.com/v2/beers')
+		.then((response) => {
+			return response.json();
+		})
+		.then((data) => {
+			setItems(searchName(data, query));
+			toggleLoading(false);
+		})
+		.catch(data => console.log(data));
+	}, [query]);
+
+	//console.log(items)
 
   return (
     <>
-		Search
 		<div>
-			{router.query.q}
+			<ItemsCollection items={items}/>
 		</div>
-		
     </>
   );
 }

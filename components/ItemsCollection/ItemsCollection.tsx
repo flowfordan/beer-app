@@ -9,24 +9,41 @@ import { cutText } from "../../helpers/cutText";
 import Link from "next/link";
 
 export const ItemsCollection = forwardRef(function ItemsCollection(
-    { className, ...props }: ItemsCollectionProps, ref: ForwardedRef<HTMLDivElement>){
+    { className, items, ...props }: ItemsCollectionProps, ref: ForwardedRef<HTMLDivElement>){
 
-		const [items, setItems] = useState([]);
-	let itemsCollection;
+		const [currentPage, setPage] = useState(1);
+		const [collection, setCollection] = useState<Array<any>>(items);
+
+	const itemsPerPage = 8;
+	const pagesNum = Math.ceil(items.length / itemsPerPage);
+	const pages = Array.from(Array(pagesNum).keys());
+
+	console.log(pagesNum, pages, items);
 
 	useEffect(() => {
-		fetch('https://api.punkapi.com/v2/beers')
-		.then((response) => {
-			return response.json();
-		})
-		.then((data) => {
-			setItems(data);
-		})
-		.catch(data => console.log(data))
-	}, [])
+		const itemsArr = items.slice((currentPage-1)*itemsPerPage, currentPage*itemsPerPage);
+		setCollection(itemsArr);
+	}, [currentPage, items]);
 
-	if(items){
-		itemsCollection = items.map((i:ProductCard) => {
+    return (
+		<div className={styles.collectionWrap}>
+		<div className={styles.pagesWrap}>
+			{pages.map(p => {
+				return(
+					<Card className={cn(styles.page, {
+						[styles.pageActive]: currentPage === p + 1
+					})} key={p} onClick={() => setPage(p + 1)}>
+						{p + 1}
+					</Card>
+				)
+			})}
+			
+		</div>
+        <div className={cn(styles.itemsCollection, className)}
+        {...props}
+        ref={ref}
+        >
+			{collection.map((i:ProductCard) => {
 			return(
 				<Link key={i.id} href={`/item/${i.id}`}>
 				<Card  className={cn(styles.item, className)}>
@@ -46,18 +63,9 @@ export const ItemsCollection = forwardRef(function ItemsCollection(
 						<div className={styles.description}>{cutText(i.description)}</div>
 					</div>
 				</Card>
-				</Link>
-			)
-		})
-	}
-
-    return (
-        <div className={cn(styles.itemsCollection, className)}
-        {...props}
-        ref={ref}
-        >
-			{itemsCollection}
+				</Link>)})}
         </div>
+		</div>
     );
     
 });
