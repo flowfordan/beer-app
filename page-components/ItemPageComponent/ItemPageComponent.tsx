@@ -9,10 +9,8 @@ import Image from "next/image";
 
 export const ItemPageComponent = ({ id }: ItemPageComponentProps): JSX.Element => {
 
-	console.log(id)
-
 	const [isLoading, toggleLoading] = useState(false);
-	const [product, setProduct] = useState(null);
+	const [product, setProduct] = useState<any>(null);
 
 	const buildProduct = () => {
 		if(product){
@@ -26,7 +24,6 @@ export const ItemPageComponent = ({ id }: ItemPageComponentProps): JSX.Element =
 			} = product;
 
 			const indicesArr = [['ABV', abv], ['IBU',ibu], ['EBC',ebc], ['SRM', srm], ['PH',ph]];
-			const processArr = [volume, boil_volume, ingredients];
 
 			return(
 			<Card className={styles.productWrap}>
@@ -61,7 +58,7 @@ export const ItemPageComponent = ({ id }: ItemPageComponentProps): JSX.Element =
 								<span role="img" aria-label="food"> 🌭🧀🍗</span>
 							</div>
 							<div className={styles.p}>
-								{food_pairing.map((f, idx) => {return(<div key={idx}>{`- ${f}`}</div>)})}
+								{food_pairing.map((f: any, idx: number) => {return(<div key={idx}>{`- ${f}`}</div>)})}
 							</div>
 							
 							
@@ -103,7 +100,7 @@ export const ItemPageComponent = ({ id }: ItemPageComponentProps): JSX.Element =
 										Malt
 									<span role="img" aria-label="malt"> 🌾</span>
 									<ul>
-											{ingredients.malt.map((m, idx) => {
+											{ingredients.malt.map((m: any, idx: number) => {
 												return (<li key={idx}>{`- ${m.name}: ${m.amount.value} ${m.amount.unit}`}</li>)
 											})}
 									</ul>
@@ -112,7 +109,7 @@ export const ItemPageComponent = ({ id }: ItemPageComponentProps): JSX.Element =
 										Hops
 										<span role="img" aria-label="hops"> 🌿</span>
 										<ul>
-										{ingredients.hops.map((i, idx) => {
+										{ingredients.hops.map((i: any, idx: number) => {
 												return (
 												<li key={idx}>
 													{`- ${i.name}: ${i.amount.value} ${i.amount.unit} (at ${i.add} for ${i.attribute})`}
@@ -153,6 +150,9 @@ export const ItemPageComponent = ({ id }: ItemPageComponentProps): JSX.Element =
 				console.log(resp.data[0]);
 				setProduct(resp.data[0]);
 				toggleLoading(false);
+			})
+			.catch(function (error) {
+				console.log(error.toJSON());
 			});
 		}
 

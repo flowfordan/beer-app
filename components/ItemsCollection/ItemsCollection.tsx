@@ -25,6 +25,8 @@ export const ItemsCollection = forwardRef(function ItemsCollection(
 		setCollection(itemsArr);
 	}, [currentPage, items]);
 
+	console.log(collection)
+
     return (
 		<div className={styles.collectionWrap}>
 		<div className={styles.pagesWrap}>
@@ -43,7 +45,7 @@ export const ItemsCollection = forwardRef(function ItemsCollection(
         {...props}
         ref={ref}
         >
-			{collection.map((i:ProductCard) => {
+			{collection.length>0? collection.map((i:ProductCard) => {
 			return(
 				<Link key={i.id} href={`/item/${i.id}`}>
 				<Card  className={cn(styles.item, className)}>
@@ -63,7 +65,7 @@ export const ItemsCollection = forwardRef(function ItemsCollection(
 						<div className={styles.description}>{cutText(i.description)}</div>
 					</div>
 				</Card>
-				</Link>)})}
+				</Link>)}) : <div>There is no item by that name</div>}
         </div>
 		</div>
     );

@@ -1,6 +1,7 @@
 .header{
 	display: grid;
-	grid-template-columns: auto 800px auto;
+	gap: 10px;
+	grid-template-columns: auto minmax(250px, 800px) auto;
 }
 
 .logoWrapper {
