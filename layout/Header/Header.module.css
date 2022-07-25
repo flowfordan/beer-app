@@ -4,7 +4,15 @@
 }
 
 .logoWrapper {
+	display: flex;
+	align-items: center;
+	font-size: 24px;
+	font-weight: 700;
+	padding-left: 10px;
+}
 
+.logoAccent {
+	color: var(--primary-dark);
 }
 
 .search {

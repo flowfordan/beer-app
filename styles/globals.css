@@ -31,9 +31,12 @@ ul {
 	--grey-main: #a0a7b3;
 	--grey: #A4A4A4;
 	--white: white;
+
 	--primary: #FFD600;
 	--primary-hover: #ffe666;
 	--primary-light: #ffef9f;
+	--primary-dark: #c99a00;
+
 	--red: #FC836D;
 	--red-light: #ffd0c7;
 	--green: #1DC37E;
