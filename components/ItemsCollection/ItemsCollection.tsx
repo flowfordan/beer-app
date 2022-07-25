@@ -45,8 +45,6 @@ export const ItemsCollection = forwardRef(function ItemsCollection(
 						<div className={styles.name}>{i.name}</div>
 						<div className={styles.description}>{cutText(i.description)}</div>
 					</div>
-					
-					
 				</Card>
 				</Link>
 			)
