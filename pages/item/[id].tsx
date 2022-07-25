@@ -1,17 +1,17 @@
 import { useRouter } from "next/router";
+import { Card } from "../../components";
 import { withLayout } from "../../layout/Layout";
+import { ItemPageComponent } from "../../page-components";
+
 
 const ItemPage = () => {
 	
-	const router = useRouter()
-	const { id } = router.query
-	console.log(router )
+	const router = useRouter();
+	const { id } = router.query;
+	console.log(router);
 	//get static props
 	return(
-		
-		<div>
-			Item ID: {id}
-		</div>
+		<ItemPageComponent id={id} />
 	)
 }
 

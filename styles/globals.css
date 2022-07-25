@@ -5,7 +5,7 @@ body {
 	color: var(--black);
 	background: #F5F6F8;
 
-	font-family: 'Noto Sans KR', sans-serif;
+	font-family: 'Open Sans', sans-serif;
 }
 
 a {
@@ -18,6 +18,12 @@ a {
 	box-sizing: border-box;
 }
 
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+  }
+
 :root {
 	--black: #3B434E;
 	--grey-light:#EBEBEB;
@@ -27,9 +33,10 @@ a {
 	--white: white;
 	--primary: #FFD600;
 	--primary-hover: #ffe666;
+	--primary-light: #ffef9f;
 	--red: #FC836D;
 	--red-light: #ffd0c7;
 	--green: #1DC37E;
 	--green-light: #C8F8E4;
-	--font-family: 'Noto Sans KR', sans-serif;
+	--font-family: 'Open Sans', sans-serif;
 }
